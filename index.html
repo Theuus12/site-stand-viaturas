@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vértice Automóveis | Encontre o seu próximo carro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="store.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="#inicio" class="brand" aria-label="Vértice Automóveis, início">
+        <span class="brand-mark">V</span>
+        <span>VÉRTICE <em>AUTOMÓVEIS</em></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a class="active" href="#inicio">Início</a>
+        <a href="#viaturas">Viaturas</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre nós</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" aria-label="Ver favoritos">♡<span class="counter">2</span></button>
+        <a href="#contactos" class="contact-link">Contacte-nos</a>
+        <button class="menu-button" aria-label="Abrir menu">☰</button>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">REVENDA MULTIMARCA DE CONFIANÇA</p>
+          <h1>O seu próximo carro está <span>mais perto.</span></h1>
+          <p class="hero-text">Descubra viaturas selecionadas, com garantia, histórico verificado e apoio em cada passo da compra.</p>
+          <div class="hero-stats">
+            <div><strong>+1.200</strong><span>viaturas vendidas</span></div>
+            <div><strong>15 anos</strong><span>de experiência</span></div>
+          </div>
+        </div>
+        <div class="hero-shape"></div>
+      </section>
+
+      <section class="search-panel" aria-label="Pesquisar viaturas">
+        <div class="search-tabs" role="tablist">
+          <button class="tab active" role="tab" aria-selected="true">Comprar viatura</button>
+        </div>
+        <form class="search-form" id="vehicle-search">
+          <label><span>Marca ou modelo</span><select id="brand"><option value="">Todas as marcas</option><option>BMW</option><option>Mercedes-Benz</option><option>Peugeot</option><option>Volvo</option></select></label>
+          <label><span>Preço máximo</span><select id="price"><option value="">Qualquer preço</option><option value="20000">Até 20.000 €</option><option value="30000">Até 30.000 €</option><option value="40000">Até 40.000 €</option></select></label>
+          <label><span>Ano mínimo</span><select id="year"><option value="">Qualquer ano</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option></select></label>
+          <button class="search-button" type="submit"><span>⌕</span> Pesquisar</button>
+        </form>
+        <button class="more-filters" type="button">+ Mais filtros</button>
+      </section>
+
+      <section class="categories content-section" aria-labelledby="categories-title">
+        <div class="section-heading"><div><p class="eyebrow">ESCOLHA O SEU ESTILO</p><h2 id="categories-title">Explore por categoria</h2></div><a href="#viaturas">Ver todas as viaturas <span>→</span></a></div>
+        <div class="category-grid">
+          <button class="category-card active" data-category="Todos"><span class="category-icon">▦</span><strong>Todos</strong><small>48 viaturas</small></button>
+          <button class="category-card" data-category="SUV"><span class="category-icon">▰</span><strong>SUV</strong><small>16 viaturas</small></button>
+          <button class="category-card" data-category="Citadino"><span class="category-icon">▱</span><strong>Citadino</strong><small>9 viaturas</small></button>
+          <button class="category-card" data-category="Berlina"><span class="category-icon">▤</span><strong>Berlina</strong><small>12 viaturas</small></button>
+          <button class="category-card" data-category="Comercial"><span class="category-icon">▯</span><strong>Comercial</strong><small>6 viaturas</small></button>
+          <button class="category-card" data-category="Elétrico"><span class="category-icon">ϟ</span><strong>Elétrico</strong><small>5 viaturas</small></button>
+        </div>
+      </section>
+
+      <section class="featured content-section" id="viaturas" aria-labelledby="featured-title">
+        <div class="section-heading"><div><p class="eyebrow">SELEÇÃO VÉRTICE</p><h2 id="featured-title">Mais vistas esta semana</h2></div><div class="list-controls"><button aria-label="Anterior">←</button><button aria-label="Seguinte">→</button></div></div>
+        <div class="vehicle-grid" id="vehicle-grid">
+          <article class="vehicle-card" data-brand="BMW" data-price="38900" data-year="2022" data-category="SUV">
+            <div class="car-image"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=85" alt="BMW X3 cinzento" /><span class="badge">Destaque</span><button class="heart" aria-label="Adicionar BMW X3 aos favoritos">♡</button></div>
+            <div class="vehicle-info"><p>BMW</p><h3>X3 xDrive20d Pack M</h3><div class="vehicle-meta"><span>2022</span><span>•</span><span>45.300 km</span><span>•</span><span>Diesel</span></div><div class="vehicle-price"><strong>38.900 €</strong></div></div>
+          </article>
+          <article class="vehicle-card" data-brand="Mercedes-Benz" data-price="42900" data-year="2023" data-category="Berlina">
+            <div class="car-image"><img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=85" alt="Mercedes-Benz Classe C preto" /><button class="heart" aria-label="Adicionar Mercedes Classe C aos favoritos">♡</button></div>
+            <div class="vehicle-info"><p>MERCEDES-BENZ</p><h3>Classe C 220 d AMG Line</h3><div class="vehicle-meta"><span>2023</span><span>•</span><span>18.200 km</span><span>•</span><span>Diesel</span></div><div class="vehicle-price"><strong>42.900 €</strong></div></div>
+          </article>
+          <article class="vehicle-card" data-brand="Peugeot" data-price="24900" data-year="2022" data-category="SUV">
+            <div class="car-image"><img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=900&q=85" alt="Peugeot 3008 azul" /><span class="badge green">Disponível</span><button class="heart" aria-label="Adicionar Peugeot 3008 aos favoritos">♡</button></div>
+            <div class="vehicle-info"><p>PEUGEOT</p><h3>3008 1.5 BlueHDi Allure</h3><div class="vehicle-meta"><span>2022</span><span>•</span><span>32.100 km</span><span>•</span><span>Diesel</span></div><div class="vehicle-price"><strong>24.900 €</strong></div></div>
+          </article>
+          <article class="vehicle-card" data-brand="Volvo" data-price="36500" data-year="2021" data-category="SUV">
+            <div class="car-image"><img src="https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=900&q=85" alt="Volvo XC40 branco" /><button class="heart" aria-label="Adicionar Volvo XC40 aos favoritos">♡</button></div>
+            <div class="vehicle-info"><p>VOLVO</p><h3>XC40 Recharge Core</h3><div class="vehicle-meta"><span>2021</span><span>•</span><span>28.500 km</span><span>•</span><span>Elétrico</span></div><div class="vehicle-price"><strong>36.500 €</strong></div></div>
+          </article>
+        </div>
+        <p id="no-results" hidden>Não encontrámos viaturas com estes filtros. Tente ajustar a pesquisa.</p>
+      </section>
+      <section class="assurance" id="servicos"><div><span class="assurance-icon">✓</span><h3>Garantia até 36 meses</h3><p>Conduza com tranquilidade.</p></div><div><span class="assurance-icon">★</span><h3>Histórico verificado</h3><p>Informação clara antes da compra.</p></div><div><span class="assurance-icon">↺</span><h3>Retoma do seu carro</h3><p>Avaliação rápida e justa.</p></div></section>
+      <section class="buying-process content-section" id="sobre" aria-labelledby="process-title">
+        <div><p class="eyebrow">COMPRA SEM COMPLICAÇÕES</p><h2 id="process-title">Escolher, experimentar, conduzir.</h2><p>Na Vértice encontra apoio especializado desde a primeira pesquisa até à entrega das chaves.</p><a href="#contactos" class="process-cta">Falar com um consultor</a></div>
+        <ol><li><span>01</span><div><strong>Escolha a viatura</strong><p>Pesquise e compare as opções disponíveis em stock.</p></div></li><li><span>02</span><div><strong>Marque um test-drive</strong><p>Veja todos os detalhes e experimente sem compromisso.</p></div></li><li><span>03</span><div><strong>Finalize a compra</strong><p>Tratamos da retoma e da transferência de propriedade.</p></div></li></ol>
+      </section>
+    </main>
+    <footer id="contactos"><span>© 2025 Vértice Automóveis</span><span>Feito para quem gosta de conduzir.</span></footer>
+    <div class="vehicle-modal" id="vehicle-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-content">
+        <button class="modal-close" type="button" aria-label="Fechar detalhes" data-close-modal>&times;</button>
+        <div class="modal-gallery"><img id="modal-image" src="" alt="" /><span id="modal-badge" class="badge" hidden></span></div>
+        <div class="modal-details">
+          <p class="modal-brand" id="modal-brand"></p>
+          <h2 id="modal-title"></h2>
+          <p class="modal-price" id="modal-price"></p>
+          <div class="modal-specs" id="modal-specs"></div>
+          <p class="modal-description" id="modal-description"></p>
+          <div class="modal-actions">
+            <a id="whatsapp-link" class="contact-action whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+            <a id="phone-link" class="contact-action phone" href="tel:+351210000000">Ligar agora</a>
+          </div>
+          <button id="interest-button" class="interest-button" type="button">Tenho interesse nesta viatura</button>
+          <p class="modal-note">Resposta rápida da nossa equipa comercial.</p>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

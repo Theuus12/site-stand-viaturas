@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vértice Automóveis | Gestão de stock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="login-fix.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section class="login-panel" id="login-panel">
+        <a class="admin-brand" href="../index.html"><span>V</span> VÉRTICE <em>AUTOMÓVEIS</em></a>
+        <div class="login-card">
+          <p class="eyebrow">ÁREA EXCLUSIVA DA REVENDA</p>
+          <h1>Gerir o seu stock, sem complicações.</h1>
+          <p>Entre para publicar viaturas, editar preços e acompanhar os seus anúncios.</p>
+          <form id="login-form">
+            <label>Email<input id="login-email" type="email" value="admin@vertice.pt" placeholder="nome@revenda.pt" required /></label>
+            <label>Palavra-passe<input id="login-password" type="password" value="123456" placeholder="••••••••" required /></label>
+            <button type="submit">Entrar no painel</button>
+            <button type="button" class="demo-login" id="demo-login">Entrar na demonstração</button>
+            <p class="login-error" id="login-error" hidden>Email ou palavra-passe inválidos.</p>
+          </form>
+          <small>Demonstração: admin@vertice.pt &nbsp;·&nbsp; palavra-passe: 123456</small>
+        </div>
+      </section>
+
+      <section class="dashboard" id="dashboard" hidden>
+        <aside class="sidebar">
+          <a class="admin-brand" href="../index.html"><span>V</span> VÉRTICE <em>AUTOMÓVEIS</em></a>
+          <nav><button class="nav-item active" data-view="overview">▦ Visão geral</button><button class="nav-item" data-view="stock">▱ O meu stock</button><button class="nav-item" data-view="new-car">＋ Adicionar viatura</button><a class="nav-item link" href="../index.html" target="_blank">↗ Ver vitrine</a></nav>
+          <button class="logout" id="logout">Sair da conta</button>
+        </aside>
+        <div class="dashboard-main">
+          <header class="dashboard-header"><div><p class="eyebrow">PAINEL DA REVENDA</p><h1 id="view-title">Bom dia, Vértice.</h1></div><div class="user-chip"><span>VA</span><div><strong>Vértice Automóveis</strong><small>Administrador</small></div></div></header>
+          <section class="view active" id="overview">
+            <div class="stat-grid"><article><small>VIATURAS EM STOCK</small><strong id="stock-count">4</strong><span>disponíveis para venda</span></article><article><small>VISUALIZAÇÕES</small><strong>2.845</strong><span>nos últimos 30 dias</span></article><article><small>PEDIDOS DE CONTACTO</small><strong>18</strong><span>este mês</span></article></div>
+            <div class="panel-header"><div><h2>Stock recente</h2><p>Os seus anúncios ativos na vitrine.</p></div><button class="primary-action" data-go-new>+ Adicionar viatura</button></div>
+            <div class="admin-table-wrap"><table><thead><tr><th>VIATURA</th><th>ANO</th><th>PREÇO</th><th>ESTADO</th></tr></thead><tbody id="recent-stock"></tbody></table></div>
+          </section>
+          <section class="view" id="stock"><div class="panel-header"><div><h2>O meu stock</h2><p>Edite ou remova anúncios publicados.</p></div><button class="primary-action" data-go-new>+ Adicionar viatura</button></div><div class="admin-table-wrap"><table><thead><tr><th>VIATURA</th><th>DETALHES</th><th>PREÇO</th><th>ESTADO</th><th></th></tr></thead><tbody id="stock-table"></tbody></table></div></section>
+          <section class="view" id="new-car"><div class="panel-header"><div><h2>Adicionar viatura</h2><p>Os dados abaixo serão apresentados na vitrine da revenda.</p></div></div><form id="car-form" class="car-form"><fieldset><legend>Informação principal</legend><div class="fields three"><label>Marca<input name="brand" placeholder="Ex.: Audi" required /></label><label>Modelo<input name="model" placeholder="Ex.: Q5 40 TDI" required /></label><label>Categoria<select name="category"><option>SUV</option><option>Berlina</option><option>Citadino</option><option>Comercial</option><option>Elétrico</option></select></label></div><div class="fields three"><label>Ano<input name="year" type="number" min="1950" max="2030" placeholder="2023" required /></label><label>Quilómetros<input name="mileage" type="number" min="0" placeholder="25000" required /></label><label>Combustível<select name="fuel"><option>Gasolina</option><option>Diesel</option><option>Híbrido</option><option>Elétrico</option></select></label></div></fieldset><fieldset><legend>Preço e características</legend><div class="fields three"><label>Preço (€)<input name="price" type="number" min="1" placeholder="29900" required /></label><label>Caixa<select name="transmission"><option>Automática</option><option>Manual</option></select></label><label>Potência<input name="power" placeholder="Ex.: 190 cv" required /></label></div><div class="fields two"><label>Cor<input name="color" placeholder="Ex.: Preto metalizado" required /></label><label>Imagem (URL)<input name="image" type="url" placeholder="https://..." required /></label></div><label>Descrição<textarea name="description" rows="4" placeholder="Descreva os principais extras, estado e garantia da viatura." required></textarea></label></fieldset><div class="form-actions"><button type="button" class="secondary-action" data-view-stock>Cancelar</button><button type="submit" class="primary-action">Publicar na vitrine</button></div></form></section>
+        </div>
+      </section>
+    </main>
+    <script src="admin.js"></script>
+  </body>
+</html>
