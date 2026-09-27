@@ -7,8 +7,23 @@ const baseVehicles = [
   { id: 'base-volvo', brand: 'Volvo', model: 'XC40 Recharge Core', year: 2021, mileage: 28500, fuel: 'Elétrico', price: 36500 }
 ];
 
-const getCustomVehicles = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-const saveCustomVehicles = vehicles => localStorage.setItem(STORAGE_KEY, JSON.stringify(vehicles));
+const readStorage = (key, fallback = '') => {
+  try { return localStorage.getItem(key) ?? fallback; }
+  catch { return fallback; }
+};
+const writeStorage = (key, value) => {
+  try { localStorage.setItem(key, value); return true; }
+  catch { return false; }
+};
+const removeStorage = key => {
+  try { localStorage.removeItem(key); }
+  catch { /* Storage may be unavailable in private or restricted browsing. */ }
+};
+const getCustomVehicles = () => {
+  try { return JSON.parse(readStorage(STORAGE_KEY, '[]')); }
+  catch { return []; }
+};
+const saveCustomVehicles = vehicles => writeStorage(STORAGE_KEY, JSON.stringify(vehicles));
 const euros = value => new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
 const kilometers = value => new Intl.NumberFormat('pt-PT').format(value) + ' km';
 
@@ -25,7 +40,7 @@ function openDashboard() {
 function authenticate(email, password) {
   document.getElementById('login-error').hidden = true;
   if (email.trim().toLowerCase() === 'admin@vertice.pt' && password === '123456') {
-    localStorage.setItem(SESSION_KEY, 'true');
+    writeStorage(SESSION_KEY, 'true');
     openDashboard();
     return;
   }
@@ -41,10 +56,10 @@ document.getElementById('login-form').addEventListener('submit', event => {
 
 document.getElementById('demo-login').addEventListener('click', () => authenticate('admin@vertice.pt', '123456'));
 
-if (localStorage.getItem(SESSION_KEY) === 'true') openDashboard();
+if (readStorage(SESSION_KEY) === 'true') openDashboard();
 
 document.getElementById('logout').addEventListener('click', () => {
-  localStorage.removeItem(SESSION_KEY);
+  removeStorage(SESSION_KEY);
   dashboard.hidden = true;
   loginPanel.hidden = false;
   document.getElementById('login-form').reset();

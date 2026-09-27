@@ -25,10 +25,13 @@
         <a href="#sobre">Sobre nós</a>
       </nav>
       <div class="header-actions">
-        <button class="icon-button" aria-label="Ver favoritos">♡<span class="counter">2</span></button>
+        <button class="icon-button" id="favorites-toggle" aria-label="Mostrar favoritos" aria-pressed="false">♡<span class="counter" id="favorites-count" hidden>0</span></button>
         <a href="#contactos" class="contact-link">Contacte-nos</a>
-        <button class="menu-button" aria-label="Abrir menu">☰</button>
+        <button class="menu-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
       </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação móvel" hidden>
+        <a href="#inicio">Início</a><a href="#viaturas">Viaturas</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre nós</a><a href="#contactos">Contacte-nos</a>
+      </nav>
     </header>
 
     <main id="inicio">
@@ -55,37 +58,41 @@
           <label><span>Ano mínimo</span><select id="year"><option value="">Qualquer ano</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option></select></label>
           <button class="search-button" type="submit"><span>⌕</span> Pesquisar</button>
         </form>
-        <button class="more-filters" type="button">+ Mais filtros</button>
+        <button class="more-filters" type="button" aria-expanded="false" aria-controls="advanced-filters">+ Mais filtros</button>
+        <div class="advanced-filters" id="advanced-filters" hidden>
+          <label><span>Combustível</span><select id="fuel"><option value="">Qualquer combustível</option><option>Gasolina</option><option>Diesel</option><option>Híbrido</option><option>Elétrico</option></select></label>
+          <label><span>Caixa</span><select id="transmission"><option value="">Qualquer caixa</option><option>Automática</option><option>Manual</option></select></label>
+        </div>
       </section>
 
       <section class="categories content-section" aria-labelledby="categories-title">
         <div class="section-heading"><div><p class="eyebrow">ESCOLHA O SEU ESTILO</p><h2 id="categories-title">Explore por categoria</h2></div><a href="#viaturas">Ver todas as viaturas <span>→</span></a></div>
         <div class="category-grid">
-          <button class="category-card active" data-category="Todos"><span class="category-icon">▦</span><strong>Todos</strong><small>48 viaturas</small></button>
-          <button class="category-card" data-category="SUV"><span class="category-icon">▰</span><strong>SUV</strong><small>16 viaturas</small></button>
-          <button class="category-card" data-category="Citadino"><span class="category-icon">▱</span><strong>Citadino</strong><small>9 viaturas</small></button>
-          <button class="category-card" data-category="Berlina"><span class="category-icon">▤</span><strong>Berlina</strong><small>12 viaturas</small></button>
-          <button class="category-card" data-category="Comercial"><span class="category-icon">▯</span><strong>Comercial</strong><small>6 viaturas</small></button>
-          <button class="category-card" data-category="Elétrico"><span class="category-icon">ϟ</span><strong>Elétrico</strong><small>5 viaturas</small></button>
+          <button class="category-card active" data-category="Todos"><span class="category-icon">▦</span><strong>Todos</strong><small>0 viaturas</small></button>
+          <button class="category-card" data-category="SUV"><span class="category-icon">▰</span><strong>SUV</strong><small>0 viaturas</small></button>
+          <button class="category-card" data-category="Citadino"><span class="category-icon">▱</span><strong>Citadino</strong><small>0 viaturas</small></button>
+          <button class="category-card" data-category="Berlina"><span class="category-icon">▤</span><strong>Berlina</strong><small>0 viaturas</small></button>
+          <button class="category-card" data-category="Comercial"><span class="category-icon">▯</span><strong>Comercial</strong><small>0 viaturas</small></button>
+          <button class="category-card" data-category="Elétrico"><span class="category-icon">ϟ</span><strong>Elétrico</strong><small>0 viaturas</small></button>
         </div>
       </section>
 
       <section class="featured content-section" id="viaturas" aria-labelledby="featured-title">
-        <div class="section-heading"><div><p class="eyebrow">SELEÇÃO VÉRTICE</p><h2 id="featured-title">Mais vistas esta semana</h2></div><div class="list-controls"><button aria-label="Anterior">←</button><button aria-label="Seguinte">→</button></div></div>
+        <div class="section-heading"><div><p class="eyebrow">SELEÇÃO VÉRTICE</p><h2 id="featured-title">Mais vistas esta semana</h2></div><div class="list-controls"><button type="button" data-rotate="-1" aria-label="Reordenar viaturas para trás">←</button><button type="button" data-rotate="1" aria-label="Reordenar viaturas para a frente">→</button></div></div>
         <div class="vehicle-grid" id="vehicle-grid">
-          <article class="vehicle-card" data-brand="BMW" data-price="38900" data-year="2022" data-category="SUV">
+          <article class="vehicle-card" tabindex="0" data-brand="BMW" data-price="38900" data-year="2022" data-category="SUV" data-fuel="Diesel" data-transmission="Automática">
             <div class="car-image"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=85" alt="BMW X3 cinzento" /><span class="badge">Destaque</span><button class="heart" aria-label="Adicionar BMW X3 aos favoritos">♡</button></div>
             <div class="vehicle-info"><p>BMW</p><h3>X3 xDrive20d Pack M</h3><div class="vehicle-meta"><span>2022</span><span>•</span><span>45.300 km</span><span>•</span><span>Diesel</span></div><div class="vehicle-price"><strong>38.900 €</strong></div></div>
           </article>
-          <article class="vehicle-card" data-brand="Mercedes-Benz" data-price="42900" data-year="2023" data-category="Berlina">
+          <article class="vehicle-card" tabindex="0" data-brand="Mercedes-Benz" data-price="42900" data-year="2023" data-category="Berlina" data-fuel="Diesel" data-transmission="Automática">
             <div class="car-image"><img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=85" alt="Mercedes-Benz Classe C preto" /><button class="heart" aria-label="Adicionar Mercedes Classe C aos favoritos">♡</button></div>
             <div class="vehicle-info"><p>MERCEDES-BENZ</p><h3>Classe C 220 d AMG Line</h3><div class="vehicle-meta"><span>2023</span><span>•</span><span>18.200 km</span><span>•</span><span>Diesel</span></div><div class="vehicle-price"><strong>42.900 €</strong></div></div>
           </article>
-          <article class="vehicle-card" data-brand="Peugeot" data-price="24900" data-year="2022" data-category="SUV">
+          <article class="vehicle-card" tabindex="0" data-brand="Peugeot" data-price="24900" data-year="2022" data-category="SUV" data-fuel="Diesel" data-transmission="Manual">
             <div class="car-image"><img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=900&q=85" alt="Peugeot 3008 azul" /><span class="badge green">Disponível</span><button class="heart" aria-label="Adicionar Peugeot 3008 aos favoritos">♡</button></div>
             <div class="vehicle-info"><p>PEUGEOT</p><h3>3008 1.5 BlueHDi Allure</h3><div class="vehicle-meta"><span>2022</span><span>•</span><span>32.100 km</span><span>•</span><span>Diesel</span></div><div class="vehicle-price"><strong>24.900 €</strong></div></div>
           </article>
-          <article class="vehicle-card" data-brand="Volvo" data-price="36500" data-year="2021" data-category="SUV">
+          <article class="vehicle-card" tabindex="0" data-brand="Volvo" data-price="36500" data-year="2021" data-category="Elétrico" data-fuel="Elétrico" data-transmission="Automática">
             <div class="car-image"><img src="https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=900&q=85" alt="Volvo XC40 branco" /><button class="heart" aria-label="Adicionar Volvo XC40 aos favoritos">♡</button></div>
             <div class="vehicle-info"><p>VOLVO</p><h3>XC40 Recharge Core</h3><div class="vehicle-meta"><span>2021</span><span>•</span><span>28.500 km</span><span>•</span><span>Elétrico</span></div><div class="vehicle-price"><strong>36.500 €</strong></div></div>
           </article>
@@ -98,7 +105,7 @@
         <ol><li><span>01</span><div><strong>Escolha a viatura</strong><p>Pesquise e compare as opções disponíveis em stock.</p></div></li><li><span>02</span><div><strong>Marque um test-drive</strong><p>Veja todos os detalhes e experimente sem compromisso.</p></div></li><li><span>03</span><div><strong>Finalize a compra</strong><p>Tratamos da retoma e da transferência de propriedade.</p></div></li></ol>
       </section>
     </main>
-    <footer id="contactos"><span>© 2026 Matheus Polanczyk. Todos os direitos reservados.</span><span>Feito para quem gosta de conduzir.</span></footer>
+    <footer id="contactos"><span>© 2026 Matheus Polanczyk. Todos os direitos reservados.</span><span>Feito para quem gosta de conduzir. <a href="mailto:geral@verticeautomoveis.pt">Contacte-nos</a></span></footer>
     <div class="vehicle-modal" id="vehicle-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
       <div class="modal-backdrop" data-close-modal></div>
       <div class="modal-content">
@@ -111,8 +118,7 @@
           <div class="modal-specs" id="modal-specs"></div>
           <p class="modal-description" id="modal-description"></p>
           <div class="modal-actions">
-            <a id="whatsapp-link" class="contact-action whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
-            <a id="phone-link" class="contact-action phone" href="tel:+351210000000">Ligar agora</a>
+            <a id="email-link" class="contact-action phone" href="mailto:geral@verticeautomoveis.pt">Enviar e-mail</a>
           </div>
           <button id="interest-button" class="interest-button" type="button">Tenho interesse nesta viatura</button>
           <p class="modal-note">Resposta rápida da nossa equipa comercial.</p>
