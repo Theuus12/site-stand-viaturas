@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560">
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e9eeeb"/><stop offset="1" stop-color="#cbd6d1"/></linearGradient>
+    <linearGradient id="car" x2="0" y2="1"><stop stop-color="#52675e"/><stop offset="1" stop-color="#203a31"/></linearGradient>
+  </defs>
+  <rect width="900" height="560" fill="url(#bg)"/>
+  <circle cx="730" cy="105" r="180" fill="#fff" opacity=".18"/>
+  <path d="M0 397h900v163H0z" fill="#d5ddda"/>
+  <path d="m174 355 52-95c13-24 35-38 64-41l290-18c34-2 63 9 86 34l83 89 43 23c18 10 28 26 28 47v37H153v-39c0-17 7-29 21-37Z" fill="url(#car)"/>
+  <path d="m252 265 48-20 114-7v87H208l44-60Zm185-29 135-8c23-1 42 7 58 24l63 73H437v-89Z" fill="#b9d0c6"/>
+  <path d="M186 356h612" stroke="#a4b5ae" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="284" cy="421" r="55" fill="#26312d"/><circle cx="284" cy="421" r="25" fill="#dce4e0"/><circle cx="702" cy="421" r="55" fill="#26312d"/><circle cx="702" cy="421" r="25" fill="#dce4e0"/>
+  <path d="M162 377h35m588 0h31" stroke="#e8f1a2" stroke-width="15" stroke-linecap="round"/>
+  <text x="450" y="520" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" letter-spacing="4" fill="#5e7168">IMAGEM DE DEMONSTRAÇÃO</text>
+</svg>

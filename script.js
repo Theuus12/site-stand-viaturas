@@ -1,5 +1,18 @@
 const FAVORITES_KEY = 'vertice_favorites';
 const customVehiclesKey = 'vertice_custom_vehicles';
+const fallbackImage = 'assets/car-placeholder.svg';
+const sampleVehicles = [
+  { id: 'sample-audi-a4', brand: 'Audi', model: 'A4 Avant 35 TDI', year: 2021, mileage: 52400, fuel: 'Diesel', price: 31900, category: 'Berlina', transmission: 'Automática', power: '163 cv', color: 'Cinzento', description: 'Carrinha familiar de demonstração, com espaço generoso, navegação e sensores de estacionamento.', image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-volkswagen-golf', brand: 'Volkswagen', model: 'Golf 1.0 TSI Life', year: 2022, mileage: 38600, fuel: 'Gasolina', price: 19900, category: 'Citadino', transmission: 'Manual', power: '110 cv', color: 'Azul', description: 'Compacto de demonstração, prático para a cidade e equipado com conectividade para smartphone.', image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-toyota-corolla', brand: 'Toyota', model: 'Corolla 1.8 Hybrid', year: 2023, mileage: 21400, fuel: 'Híbrido', price: 26900, category: 'Berlina', transmission: 'Automática', power: '122 cv', color: 'Branco', description: 'Híbrido de demonstração com caixa automática, câmara traseira e sistemas de assistência à condução.', image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-renault-captur', brand: 'Renault', model: 'Captur E-Tech Hybrid', year: 2022, mileage: 33700, fuel: 'Híbrido', price: 23500, category: 'SUV', transmission: 'Automática', power: '145 cv', color: 'Vermelho', description: 'SUV compacto de demonstração, com posição de condução elevada e tecnologia híbrida.', image: 'https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-tesla-model-3', brand: 'Tesla', model: 'Model 3 Standard Range', year: 2022, mileage: 29800, fuel: 'Elétrico', price: 32900, category: 'Elétrico', transmission: 'Automática', power: '283 cv', color: 'Preto', description: 'Berlina elétrica de demonstração, com grande ecrã central e autonomia para deslocações diárias.', image: 'https://images.unsplash.com/photo-1560958089-b8a1929c0c07?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-ford-puma', brand: 'Ford', model: 'Puma 1.0 EcoBoost ST-Line', year: 2021, mileage: 44200, fuel: 'Gasolina', price: 21900, category: 'SUV', transmission: 'Manual', power: '125 cv', color: 'Azul', description: 'Crossover de demonstração ágil, com sensores de estacionamento e conectividade integrada.', image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-skoda-octavia', brand: 'Skoda', model: 'Octavia Combi 2.0 TDI', year: 2022, mileage: 41300, fuel: 'Diesel', price: 29500, category: 'Berlina', transmission: 'Automática', power: '150 cv', color: 'Prata', description: 'Carrinha de demonstração com amplo espaço de bagageira, controlo de velocidade e câmara traseira.', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-kia-sportage', brand: 'Kia', model: 'Sportage 1.6 T-GDi', year: 2023, mileage: 18700, fuel: 'Gasolina', price: 31500, category: 'SUV', transmission: 'Automática', power: '150 cv', color: 'Cinzento', description: 'SUV de demonstração com interior confortável, câmara e sistemas de segurança ativa.', image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-hyundai-i20', brand: 'Hyundai', model: 'i20 1.0 T-GDi Comfort', year: 2022, mileage: 26900, fuel: 'Gasolina', price: 18400, category: 'Citadino', transmission: 'Manual', power: '100 cv', color: 'Branco', description: 'Citadino de demonstração económico, com ecrã multimédia e assistentes de condução.', image: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=85' },
+  { id: 'sample-fiat-500e', brand: 'Fiat', model: '500e Icon', year: 2022, mileage: 16200, fuel: 'Elétrico', price: 19900, category: 'Elétrico', transmission: 'Automática', power: '118 cv', color: 'Verde', description: 'Citadino elétrico de demonstração, fácil de estacionar e pensado para deslocações urbanas.', image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=85' }
+];
 const categoryCards = [...document.querySelectorAll('.category-card')];
 const grid = document.getElementById('vehicle-grid');
 const modal = document.getElementById('vehicle-modal');
@@ -14,6 +27,14 @@ const readFavorites = () => {
 };
 const vehicleKey = card => card.dataset.adminId || card.querySelector('h3').textContent;
 const favorites = readFavorites();
+const setImageFallback = image => {
+  image.onerror = () => {
+    image.onerror = null;
+    image.src = fallbackImage;
+  };
+  if (image.complete && image.naturalWidth === 0) image.onerror();
+};
+document.querySelectorAll('.car-image img').forEach(setImageFallback);
 
 function updateFavoriteUI() {
   document.querySelectorAll('.vehicle-card').forEach(card => {
@@ -139,12 +160,14 @@ function openVehicleModal(card) {
   const image = card.querySelector('img');
   const meta = [...card.querySelectorAll('.vehicle-meta span')].filter(item => item.textContent !== '•').map(item => item.textContent);
   const details = detailsByTitle[title] || {
-    transmission: card.dataset.transmission || 'Sob consulta', power: 'Sob consulta', color: 'Sob consulta',
+    transmission: card.dataset.transmission || 'Sob consulta', power: card.dataset.power || 'Sob consulta', color: card.dataset.color || 'Sob consulta',
     description: card.dataset.description || 'Contacte-nos para obter mais informações sobre esta viatura.'
   };
   const badge = card.querySelector('.badge');
-  document.getElementById('modal-image').src = image.src;
-  document.getElementById('modal-image').alt = image.alt;
+  const modalImage = document.getElementById('modal-image');
+  modalImage.src = image.src;
+  modalImage.alt = image.alt;
+  setImageFallback(modalImage);
   document.getElementById('modal-brand').textContent = brand;
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-price').textContent = card.querySelector('.vehicle-price strong').textContent;
@@ -211,9 +234,10 @@ const advancedPanel = document.getElementById('advanced-filters');
 advancedPanel.hidden = true;
 
 function renderAdminVehicles() {
-  let vehicles = [];
-  try { vehicles = JSON.parse(localStorage.getItem(customVehiclesKey) || '[]'); }
-  catch { vehicles = []; }
+  let customVehicles = [];
+  try { customVehicles = JSON.parse(localStorage.getItem(customVehiclesKey) || '[]'); }
+  catch { customVehicles = []; }
+  const vehicles = [...sampleVehicles, ...customVehicles];
   vehicles.forEach(vehicle => {
     if (grid.querySelector(`[data-admin-id="${CSS.escape(vehicle.id)}"]`)) return;
     const card = document.createElement('article');
@@ -228,6 +252,8 @@ function renderAdminVehicles() {
     card.dataset.fuel = vehicle.fuel;
     card.dataset.transmission = vehicle.transmission;
     card.dataset.description = vehicle.description;
+    card.dataset.power = vehicle.power || '';
+    card.dataset.color = vehicle.color || '';
     const info = document.createElement('div');
     info.className = 'vehicle-info';
     info.innerHTML = `<p></p><h3></h3><div class="vehicle-meta"><span></span><span>•</span><span></span><span>•</span><span></span></div><div class="vehicle-price"><strong></strong></div>`;
@@ -243,9 +269,10 @@ function renderAdminVehicles() {
     const image = document.createElement('img');
     image.src = vehicle.image;
     image.alt = `${vehicle.brand} ${vehicle.model}`;
+    setImageFallback(image);
     const badge = document.createElement('span');
     badge.className = 'badge green';
-    badge.textContent = 'Disponível';
+    badge.textContent = vehicle.id.startsWith('sample-') ? 'Exemplo' : 'Disponível';
     const heart = document.createElement('button');
     heart.className = 'heart';
     heart.type = 'button';
